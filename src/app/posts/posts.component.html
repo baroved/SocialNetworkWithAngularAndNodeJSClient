@@ -1,0 +1,18 @@
+<div class="pp" *ngFor="let i of Posts">
+  <div class="userName">{{i.UserName}}</div>
+  <div>{{i.Date | date:'MM/dd/yyyy'}}</div>
+  <div>{{i.Text}}</div>
+  <img class="imgPost" [src]="i.ImageSrc[0]" />
+ 
+  <br>
+  <br>
+
+  <span>
+    <app-comments-modal (onCommentClick)="onPostCommentSelect($event,i)" [inputPostComment]="postCommentObservable"></app-comments-modal>
+  </span>
+  <span>
+    <app-likes-modal  (onLikeClick)="onPostLikeSelect($event,i)" [inputPostLike]="postLikeObservable"></app-likes-modal>
+  </span>
+
+</div>
+

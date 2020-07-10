@@ -1,0 +1,25 @@
+.right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.left {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.main {
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  width: 120px;
+  height: 100px;
+  border-radius: 30%;
+  background-color: rgba(235, 169, 29, 0.781);
+  font-family: cursive;
+  font-size: 15px;
+}

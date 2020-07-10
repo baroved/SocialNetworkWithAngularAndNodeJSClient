@@ -1,0 +1,15 @@
+<div class="mainDivCommentAndLike">
+  
+<div *ngFor="let commend of commends">
+  <div class="userName">{{commend.UserName}}</div>
+  <div>
+    <span>{{commend.Text}}</span>
+    <span class="sept"></span>
+    <span>{{commend.Date | date:'short'}}</span>
+  </div>
+</div>
+<form [formGroup]="commentForm">
+  <input formControlName="comment" comment="ngModel" [(ngModel)]='newComment.text' #comment>
+  <input type="button" [disabled]="commentForm.invalid" (click)="AddComment(comment.value)" value="Add comment">
+</form>
+</div>

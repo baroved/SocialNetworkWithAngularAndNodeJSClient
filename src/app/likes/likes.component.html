@@ -1,0 +1,9 @@
+<div class="mainDivCommentAndLike">
+  
+<div *ngFor="let like of likes">
+    <div class="userName">{{like.UserName}}</div>
+  </div>
+  
+  <button *ngIf="!res" (click)="AddLike() && res">Add Like</button>
+  <button *ngIf="res" (click)="AddLike() && !res">Remove Like</button>
+</div>

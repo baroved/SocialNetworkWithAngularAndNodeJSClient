@@ -1,0 +1,170 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<div class="container">
+
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Create Account</h4>
+
+      <form [formGroup]="registerForm">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input [(ngModel)]='newUser.UserName' formControlName="username" class="form-control" placeholder="UserName"
+            type="text">
+        </div> <!-- form-group// -->
+        <div id="ValidDiv"
+          *ngIf="Controllers.username.errors && (Controllers.username.dirty || Controllers.username.touched)">
+          <div *ngIf="Controllers.username.errors.required">
+            UserName is required
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.username.errors.minlength">
+            UserName must be minLength 5
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.username.errors.maxlength">
+            UserName must be maxLength 10
+          </div>
+        </div>
+        <div id="ValidDiv" [hidden]="Ok">
+          UserName is already exists !
+        </div>
+
+
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input [(ngModel)]='newUser.Name' formControlName="name" class="form-control" placeholder="Full name"
+            type="text">
+        </div> <!-- form-group// -->
+
+        <div id="ValidDiv" *ngIf="Controllers.name.errors && (Controllers.name.dirty || Controllers.name.touched)">
+          <div *ngIf="Controllers.name.errors.required">
+            Name is required
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.name.errors.minlength">
+            Name must be minLength 2
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.name.errors.maxlength">
+            Name must be maxLength 10
+          </div>
+        </div>
+
+
+
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          </div>
+          <input [(ngModel)]='newUser.Email' formControlName="email" class="form-control" placeholder="Email"
+            class="form-control" placeholder="Email address" type="email">
+        </div> <!-- form-group// -->
+
+        <div id="ValidDiv" *ngIf="Controllers.email.errors && (Controllers.email.dirty || Controllers.email.touched)">
+          <div *ngIf="Controllers.email.errors.required">
+            Email is required
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.email.errors.pattern">
+            Invalid pattern
+          </div>
+        </div>
+
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+
+          <input [(ngModel)]='newUser.Password' formControlName="password" class="form-control" placeholder="Password"
+            type="password">
+        </div> <!-- form-group// -->
+
+        <div id="ValidDiv"
+          *ngIf="Controllers.password.errors && (Controllers.password.dirty || Controllers.password.touched)">
+          <div *ngIf="Controllers.password.errors.required">
+            Password is required
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.password.errors.minlength">
+            Password must be minLength 8
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.password.errors.maxlength">
+            Password must be maxLength 16
+          </div>
+        </div>
+
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+          </div>
+          <input [(ngModel)]='newUser.ImgSrc' formControlName="image" class="form-control" placeholder="Image"
+            type="text">
+        </div> <!-- form-group end.// -->
+        <div id="ValidDiv" *ngIf="Controllers.image.errors  && (Controllers.image.dirty || Controllers.image.touched)">
+          Source Image</div>
+
+
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+          </div>
+          <input [(ngModel)]='newUser.WorkAddress' formControlName="workAddress" class="form-control"
+            placeholder="Work Address" type="text">
+        </div> <!-- form-group// -->
+        <div id="ValidDiv"
+          *ngIf="Controllers.workAddress.errors  && (Controllers.workAddress.dirty || Controllers.workAddress.touched)">
+          <div *ngIf="Controllers.workAddress.errors.required">
+            Address is required
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.workAddress.errors.minlength">
+            Address must be minLength 3
+          </div>
+          <div id="ValidDiv" *ngIf="Controllers.workAddress.errors.maxlength">
+            Address must be maxLength 30
+          </div>
+
+        </div>
+
+
+
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+          </div>
+          <input [(ngModel)]='newUser.DateOfBirth' formControlName="birthDate" class="form-control" type="date">
+        </div> <!-- form-group// -->
+
+        <div id="ValidDiv"
+          *ngIf="Controllers.birthDate.errors  && (Controllers.birthDate.dirty || Controllers.birthDate.touched)">Enter
+          BirthDate</div>
+        <div class="form-group">
+
+          <button type="submit" (click)="Register()" [disabled]="registerForm.invalid"
+            class="btn btn-primary btn-block"> Create Account
+          </button>
+
+        </div> <!-- form-group// -->
+        <p class="text-center">Have an account? <a href="/login">Log In</a> </p>
+      </form>
+    </article>
+  </div> <!-- card.// -->
+
+</div>
+<!--container end.//-->
